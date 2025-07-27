@@ -2,12 +2,15 @@
 import Icon from "../Icon.vue";
 
 import type { item } from "@/interfaces";
+import Dropdown from "./Dropdown.vue";
 
 const menu: item[] = [
   { id: 1, name: "promo" },
   { id: 2, name: "categoria" },
   { id: 3, name: "marcas" },
 ];
+
+const menuItemOptions = [{ name: "Item" }, { name: "Item" }];
 </script>
 
 <template>
@@ -15,8 +18,11 @@ const menu: item[] = [
     <nav id="menu" class="flex flex-row justify-around items-center h-20">
       <h1 id="title" class="font-bold tracking-wider px-10">VICOMMERCE</h1>
       <ul id="list" class="flex flex-row w-80 max-w-sm justify-center">
-        <li v-for="{ id, name } in menu" :key="id" class="px-5">{{ name }}</li>
+        <li v-for="{ id, name } in menu" :key="id" class="px-5">
+          <Dropdown :title="name" :options="menuItemOptions" />
+        </li>
       </ul>
+
       <div class="w-32 max-w-xs flex flex-row justify-evenly">
         <Icon name="person" />
         <Icon name="shopping_cart" />
